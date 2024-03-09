@@ -2,6 +2,7 @@
 galaxy_create_user: true # False by default, as e.g. you might have a 'galaxy' user provided by LDAP or AD.
 galaxy_separate_privileges: true # Best practices for security, configuration is owned by 'root' (or a different user) than the processes
 galaxy_manage_paths: true # False by default as your administrator might e.g. have root_squash enabled on NFS. Here we can create the directories so it's fine.
+galaxy_manage_cleanup: true
 galaxy_layout: root-dir
 galaxy_root: /srv/galaxy
 galaxy_user: {name: "{{ galaxy_user_name }}", shell: /bin/bash}
@@ -32,6 +33,7 @@ galaxy_job_config:
 galaxy_config:
   galaxy:
     # Main Configuration
+    enable_notification_system: true #通知系统
     admin_users:
     - admin@example.org
     database_connection: "postgresql:///{{ galaxy_db_name }}?host=/var/run/postgresql"
